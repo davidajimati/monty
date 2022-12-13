@@ -3,9 +3,9 @@
 /**
  *
 */
-int main()
+int main(int ac, char **av)
 {
-	int choice;
+	/*int choice;
 	
 
 	while (choice != 3)
@@ -24,6 +24,7 @@ int main()
 			default:
 				exit(0);
 		}
-	}
+	}*/
+	file_handle(ac, av);
 	return (0);
 }

@@ -39,5 +39,7 @@ typedef struct instruction_s
 
 void push();
 void pall();
+void file_handle(int ac, char **av);
+
 
 #endif
