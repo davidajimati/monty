@@ -39,6 +39,6 @@ typedef struct instruction_s
 void push(stack_t *head, int num);
 void initiate(stack_t *head);
 void pop(stack_t *head);
-int pall(stack_t *head)
+void pall(stack_t *head);
 
 #endif /* MONTY_H */

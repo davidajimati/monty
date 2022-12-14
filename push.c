@@ -9,16 +9,8 @@
  * adding a node to a linked list
 */
 
-void push(stack_t *head, int num)
+void push(stack_t *head, stack_t *node, int num)
 {
-	stack_t *node = malloc(sizeof(stack_t)); /* Initiate the stack <name NODE> */
-
-	if (node == NULL) /* Check if malloc fails */
-	{
-		printf("Error: malloc failed");
-		exit(EXIT_FAILURE);
-	}
-
 	/**
 	 * assign values to the beginning of stack;
 	 * next points to where head formerly points

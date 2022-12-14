@@ -8,16 +8,17 @@
  * Description: pall traverses the lists and prints the data to stdout
 */
 
-int pall(stack_t *head)
+void pall(stack_t *head)
 {
 	int pr;
 
 	if (head == NULL)
 		exit (EXIT_FAILURE);
 
-	pr = head->next;
+	pr = head->n;
 	while (head != NULL)
 	{
 		printf("%d\n", pr);
+		head = head->next;
 	}
 }
