@@ -2,9 +2,13 @@
 
 void file_handle(int ac, char **av)
 {
-	FILE *fileptr;
-	char buf[256], *file;
-	int ch;
+	FILE *line;
+	char *buf, *file, *token, **avcode;
+	size_t size;
+	int i = 0, line_no = 0;
+	ssize_t nread;
+	stack_t *stack = NULL;
+	void (*func)(stack_t **, unsigned int);
 
 	if (ac != 2)
 	{
@@ -12,23 +16,22 @@ void file_handle(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	file = av[1];
-	fileptr = fopen(file, "r");
-	if (fileptr == NULL)
+	line = fopen(file, "r");
+	if (line == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", file);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
-	ch = getc(fileptr);
-	while (ch != EOF)
-	{
-		putchar(ch);
-		ch = getc(fileptr);
-	}
+	nread = getline(&buf, &size, line);
 
-	/*fgets(buf, 256, fileptr);
-	while (fgets(buf, 256, fileptr) != NULL)
-	{
-		printf("%s\n", buf);
-	}*/
-	fclose(fileptr);
+		line_no++;
+		putchar('h');
+		avcode = stringsplit(buf);
+		printf("hi");
+		func = getfunc(avcode);
+		putchar('h');
+		if (func != NULL)
+			func(&stack, line_no);
+		
+	fclose(line);
 }

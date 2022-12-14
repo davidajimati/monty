@@ -1,12 +1,48 @@
 #include "monty.h"
 
 /**
- * push - adds an element to a stack
+ * getfunc - gets function while checking through operation codes
+ * @s: 
+ * Return: function that performs operation
 */
-stack_t *head;
-void push()
+int data;
+
+void (*getfunc(char **avcode))(stack_t **, unsigned int)
 {
-	int data;
+	instruction_t ops[] = {
+		{"push", push},
+		{"pall", pall},
+		{NULL, NULL}
+	};
+	int j, i = 0;
+	char *code, *element;
+
+	while (ops[i].opcode != NULL)
+	{
+		j = 0;
+		printf("op: %s\n", ops[i].opcode);
+		while (avcode[j] != NULL)
+		{
+			code = avcode[j];
+			data = atoi(avcode[j + 1]);
+			if (strcmp(ops[i].opcode, code) == 0 )
+			{
+				printf("yel\n");
+				return(ops[i].f);
+			}
+			j++;
+		}
+		
+		i++;
+	}
+	printf("yel\n");
+}
+
+/**
+ * push - adds an element to a *stack
+*/
+void push(stack_t **stack, unsigned int line_number)
+{
 	stack_t *node;
 
 	node = malloc(sizeof (stack_t));
@@ -15,26 +51,25 @@ void push()
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	printf("Enter the element: ");
-	scanf("%d", &data);
 	node->prev = NULL;
 	node->n = data;
-	if (head == NULL)
+	printf("nn: %d\n", node->n);
+	if (*stack == NULL)
 	{
-		head = node;
+		*stack = node;
 		node->next = NULL;	
 	}
 	else
 	{
-		head->prev = node;
-		node->next = head;
-		head = node;
+		(*stack)->prev = node;
+		node->next = *stack;
+		*stack = node;
 	}
 }
 
-void pall()
+void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *node = head;
+	stack_t *node = *stack;
 
 	while (node != NULL)
 	{
