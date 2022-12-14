@@ -9,8 +9,9 @@
  * adding a node to a linked list
 */
 
-void push(stack_t *head, stack_t *node, int num)
+stack_t *push(stack_t *head, int num)
 {
+	stack_t *node = malloc(sizeof(stack_t));
 	/**
 	 * assign values to the beginning of stack;
 	 * next points to where head formerly points
@@ -19,7 +20,7 @@ void push(stack_t *head, stack_t *node, int num)
 	node->n = num;
 	node->next = head;
 	head = node;
-
 	return (node);
+
 	free(node);
 }

@@ -7,7 +7,7 @@
  * Description: creates a stack
 */
 
-int *initiate(void)
+stack_t *initiate(void)
 {
 	stack_t *node = malloc(sizeof(stack_t)); /* Initiate the stack <name: NODE> */
 

@@ -36,8 +36,8 @@ typedef struct instruction_s
 
 #include <stdio.h>
 #include <stdlib.h>
-void push(stack_t *head, int num);
-void initiate(stack_t *head);
+stack_t *push(stack_t *head, int num);
+stack_t *initiate(void);
 void pop(stack_t *head);
 void pall(stack_t *head);
 
