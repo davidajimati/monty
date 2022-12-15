@@ -1,7 +1,7 @@
 push 1 Push 0 onto the stack
 push 2 Push 1 onto the stack
 
-push 3
+pint
   push 4
                    pall    
 

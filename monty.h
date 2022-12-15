@@ -44,6 +44,7 @@ void (*getfunc(char **avcode))(stack_t **, unsigned int);
 char **stringsplit(char *buf);
 void free_av(char **av);
 void free_stack(stack_t *stack);
+void pint(stack_t **stack, unsigned int line_number);
 extern int data;
 
 #endif

@@ -13,6 +13,7 @@ void (*getfunc(char **avcode))(stack_t **, unsigned int)
 	instruction_t ops[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 	int j, i = 0;
