@@ -47,6 +47,7 @@ void (*getfunc(char **avcode))(stack_t **, unsigned int)
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node;
+	(void)line_number;
 
 	node = malloc(sizeof (stack_t));
 	if (node == NULL)
@@ -73,7 +74,8 @@ void push(stack_t **stack, unsigned int line_number)
 void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node = *stack;
-
+	(void)line_number;
+	
 	while (node != NULL)
 	{
 		printf("%d\n", node->n);
