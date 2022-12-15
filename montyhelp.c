@@ -10,16 +10,16 @@ char **stringsplit(char *buf)
 	avcode = malloc(sizeof(char *));
 	if (avcode == NULL)
 	{
-		//free(buf);
+		/* free(buf); */
 		return (NULL);
 	}
 	bufcpy = strdup(buf);
 	token = strtok(bufcpy, dlim);
 	if (token == NULL)
 	{
-		//avcode[0] = NULL;
-		//free(bufcpy);
-		//free(avcode);
+		avcode[0] = NULL;
+		/* free(bufcpy);
+		free(avcode); */
 		return (NULL);
 	}
 	for(i = 0; token != NULL; i++)
@@ -28,7 +28,7 @@ char **stringsplit(char *buf)
 		token = strtok(NULL, dlim);
 	}
 	avcode[i] = NULL;
-	//free(buf);
-	//free(bufcpy);
+	/* free(buf);
+	free(bufcpy); */
 	return (avcode);
 }
