@@ -39,7 +39,7 @@ typedef struct instruction_s
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-void file_handle(int ac, char **av);
+void file_handle(char **av);
 void (*getfunc(char **avcode))(stack_t **, unsigned int);
 char **stringsplit(char *buf);
 void free_av(char **av);

@@ -13,6 +13,6 @@ int main(int ac, char **av)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	file_handle(ac, av);
+	file_handle(av);
 	return (0);
 }

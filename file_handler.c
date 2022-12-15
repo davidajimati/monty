@@ -6,7 +6,7 @@
  * @av: argument strings
 */
 
-void file_handle(int ac, char **av)
+void file_handle(char **av)
 {
 	FILE *line;
 	char *buf = NULL, *file, **avcode;
