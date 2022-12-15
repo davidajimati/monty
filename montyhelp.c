@@ -91,3 +91,13 @@ void free_stack(stack_t *stack)
 		stack = tmp;
 	}
 }
+
+void checkstack(stack_t **stack, int count)
+{
+	if (stack == NULL || *stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", count);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+}

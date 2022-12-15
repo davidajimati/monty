@@ -14,6 +14,8 @@ void (*getfunc(char **avcode))(stack_t **, unsigned int)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 	int j, i = 0;
@@ -84,6 +86,7 @@ void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node = *stack;
 	(void)line_number;
+
 
 	while (node != NULL)
 	{
