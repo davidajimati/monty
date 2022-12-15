@@ -9,7 +9,7 @@
 int getnumtokens(char *buf)
 {
 	int ntokens = 1;
-	char *token, *dlim = " \n";
+	char *token, *dlim = " \t\r\n";
 
 	token = strtok(buf, dlim);
 	while (token != NULL)
