@@ -3,9 +3,9 @@
 void file_handle(int ac, char **av)
 {
 	FILE *line;
-	char *buf, *file, **avcode;
+	char *buf = NULL, *file, **avcode;
 	size_t size;
-	int i = 0, line_no = 0;
+	int line_no = 0;
 	ssize_t nread;
 	stack_t *stack = NULL;
 	void (*func)(stack_t **, unsigned int);
@@ -20,13 +20,12 @@ void file_handle(int ac, char **av)
 	if (line == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", file);
-		exit(0);
+		exit(EXIT_FAILURE);
 	}
 	nread = getline(&buf, &size, line);
-	for (i = 0; nread >= 0; i++)
+	while(nread >= 0)
 	{
 		line_no++;
-		printf("ln: %d \n", line_no);
 		avcode = stringsplit(buf);
 		if (avcode == NULL)
 		{
@@ -36,9 +35,9 @@ void file_handle(int ac, char **av)
 		func = getfunc(avcode);
 		if (func != NULL)
 			func(&stack, line_no);
+		/*free_av(avcode);*/
 		nread = getline(&buf, &size, line);
 	}		
-		
 	fclose(line);
 	free(buf);
 }

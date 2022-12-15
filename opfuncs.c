@@ -31,6 +31,7 @@ void (*getfunc(char **avcode))(stack_t **, unsigned int)
 				element = avcode[j + 1];
 				if (element != NULL && strcmp("push", code) == 0)
 					data = atoi(element);
+				/*free_av(avcode);*/
 				return(ops[i].f);
 			}
 			j++;

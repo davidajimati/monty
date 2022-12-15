@@ -10,16 +10,16 @@ char **stringsplit(char *buf)
 	avcode = malloc(sizeof(char *));
 	if (avcode == NULL)
 	{
-		/* free(buf); */
-		return (NULL);
+		free(buf);
+		fprintf(stderr, "Error: malloc failed");
+		exit(EXIT_FAILURE);
 	}
 	bufcpy = strdup(buf);
 	token = strtok(bufcpy, dlim);
 	if (token == NULL)
 	{
-		avcode[0] = NULL;
-		/* free(bufcpy);
-		free(avcode); */
+		free(bufcpy);
+		free(avcode);
 		return (NULL);
 	}
 	for(i = 0; token != NULL; i++)
@@ -28,7 +28,21 @@ char **stringsplit(char *buf)
 		token = strtok(NULL, dlim);
 	}
 	avcode[i] = NULL;
-	/* free(buf);
-	free(bufcpy); */
+	free(bufcpy);
 	return (avcode);
+}
+
+/**
+ *
+ */
+
+void free_av(char **av)
+{
+	int i;
+
+	for (i = 0; av[i]; i++)
+	{
+		free(av[i]);
+	}
+	free(av);
 }
