@@ -68,3 +68,24 @@ void swap(stack_t **stack, unsigned int line_number)
 	node->n = node->next->n;
 	node->next->n = tmp;
 }
+
+/**
+ * add - adds top two elements of the stack
+ * @stack: pointer to address of head of a stack
+ * @line_number: current line of execution
+*/
+
+void add(stack_t **stack, unsigned int line_number)
+{
+	stack_t *node = *stack;
+
+	if (node == NULL || node->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	node->next->n += node->n;
+	*stack = (*stack)->next;
+	free(node);
+}
