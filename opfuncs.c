@@ -16,6 +16,7 @@ void (*getfunc(char **avcode))(stack_t **, unsigned int)
 		{"pint", pint},
 		{"pop", pop},
 		{"nop", nop},
+		{"swap", swap},
 		{NULL, NULL}
 	};
 	int j, i = 0;
