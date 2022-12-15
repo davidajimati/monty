@@ -38,6 +38,7 @@ void (*getfunc(char **avcode))(stack_t **, unsigned int)
 		
 		i++;
 	}
+	return (NULL);
 }
 
 /**

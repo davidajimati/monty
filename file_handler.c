@@ -3,7 +3,7 @@
 void file_handle(int ac, char **av)
 {
 	FILE *line;
-	char *buf, *file, *token, **avcode;
+	char *buf, *file, **avcode;
 	size_t size;
 	int i = 0, line_no = 0;
 	ssize_t nread;
@@ -40,4 +40,5 @@ void file_handle(int ac, char **av)
 	}		
 		
 	fclose(line);
+	free(buf);
 }

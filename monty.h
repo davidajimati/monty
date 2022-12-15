@@ -6,7 +6,6 @@
 #include <string.h>
 #include <ctype.h>
 
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -44,6 +43,6 @@ void file_handle(int ac, char **av);
 void (*getfunc(char **avcode))(stack_t **, unsigned int);
 char **stringsplit(char *buf);
 int getdata(char *string);
-//extern int data;
+extern int data;
 
 #endif
