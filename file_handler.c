@@ -1,7 +1,6 @@
 #define _POSIX_C_SOURCE 200809L
 #include "monty.h"
 
-
 /**
  * file_handle - handle file passed as argument
  * @ac: argument count
