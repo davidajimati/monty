@@ -23,15 +23,21 @@ void file_handle(int ac, char **av)
 		exit(0);
 	}
 	nread = getline(&buf, &size, line);
-
+	for (i = 0; nread >= 0; i++)
+	{
 		line_no++;
-		putchar('h');
+		printf("ln: %d \n", line_no);
 		avcode = stringsplit(buf);
-		printf("hi");
+		if (avcode == NULL)
+		{
+			nread = getline(&buf, &size, line);
+			continue;
+		}
 		func = getfunc(avcode);
-		putchar('h');
 		if (func != NULL)
 			func(&stack, line_no);
+		nread = getline(&buf, &size, line);
+	}		
 		
 	fclose(line);
 }

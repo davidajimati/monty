@@ -4,22 +4,31 @@
 */
 char **stringsplit(char *buf)
 {
-	char **avcode, *token, *dlim = " \n";
+	char **avcode, *bufcpy, *token, *dlim = " \n";
 	int i;
 
 	avcode = malloc(sizeof(char *));
 	if (avcode == NULL)
 	{
-		free(buf);
+		//free(buf);
 		return (NULL);
 	}
-	token = strtok(buf, dlim);
-	avcode[0] = strdup(token);
+	bufcpy = strdup(buf);
+	token = strtok(bufcpy, dlim);
+	if (token == NULL)
+	{
+		//avcode[0] = NULL;
+		//free(bufcpy);
+		//free(avcode);
+		return (NULL);
+	}
 	for(i = 0; token != NULL; i++)
 	{
 		avcode[i] = strdup(token);
 		token = strtok(NULL, dlim);
 	}
 	avcode[i] = NULL;
+	//free(buf);
+	//free(bufcpy);
 	return (avcode);
 }

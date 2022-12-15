@@ -20,14 +20,17 @@ void (*getfunc(char **avcode))(stack_t **, unsigned int)
 	while (ops[i].opcode != NULL)
 	{
 		j = 0;
-		printf("op: %s\n", ops[i].opcode);
 		while (avcode[j] != NULL)
 		{
 			code = avcode[j];
-			data = atoi(avcode[j + 1]);
+			element = avcode[j + 1];
+			if (element != NULL)
+				data = atoi(element);
 			if (strcmp(ops[i].opcode, code) == 0 )
 			{
-				printf("yel\n");
+				element = avcode[j + 1];
+				if (element != NULL && strcmp("push", code) == 0)
+					data = atoi(element);
 				return(ops[i].f);
 			}
 			j++;
@@ -35,7 +38,6 @@ void (*getfunc(char **avcode))(stack_t **, unsigned int)
 		
 		i++;
 	}
-	printf("yel\n");
 }
 
 /**
@@ -53,7 +55,6 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	node->prev = NULL;
 	node->n = data;
-	printf("nn: %d\n", node->n);
 	if (*stack == NULL)
 	{
 		*stack = node;
@@ -65,6 +66,7 @@ void push(stack_t **stack, unsigned int line_number)
 		node->next = *stack;
 		*stack = node;
 	}
+	
 }
 
 void pall(stack_t **stack, unsigned int line_number)
