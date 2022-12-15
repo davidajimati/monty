@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * file_handle - handle file passed as argument
+ * @ac: argument count
+ * @av: argument strings
+*/
+
 void file_handle(int ac, char **av)
 {
 	FILE *line;
@@ -10,11 +16,7 @@ void file_handle(int ac, char **av)
 	stack_t *stack = NULL;
 	void (*func)(stack_t **, unsigned int);
 
-	if (ac != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+
 	file = av[1];
 	line = fopen(file, "r");
 	if (line == NULL)
@@ -23,7 +25,7 @@ void file_handle(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	nread = getline(&buf, &size, line);
-	while(nread >= 0)
+	while (nread >= 0)
 	{
 		line_no++;
 		avcode = stringsplit(buf);
@@ -35,9 +37,11 @@ void file_handle(int ac, char **av)
 		func = getfunc(avcode);
 		if (func != NULL)
 			func(&stack, line_no);
-		/*free_av(avcode);*/
+		free_av(avcode);
 		nread = getline(&buf, &size, line);
-	}		
-	fclose(line);
+	}
 	free(buf);
+	buf == NULL;
+	fclose(line);
+	free_stack(stack);
 }

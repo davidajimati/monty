@@ -1,30 +1,18 @@
 #include "monty.h"
 
 /**
- *
+ * main - main driver of code
+ * @ac: argument count
+ * @av: argument strings
 */
+
 int main(int ac, char **av)
 {
-	/*int choice;
-	
-
-	while (choice != 3)
+	if (ac != 2)
 	{
-		printf("Enter choice: ");
-		scanf("%d", &choice);
-
-		switch (choice)
-		{
-			case 1:
-				push();
-				break;
-			case 2:
-				pall();
-				break;
-			default:
-				exit(0);
-		}
-	}*/
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 	file_handle(ac, av);
 	return (0);
 }
