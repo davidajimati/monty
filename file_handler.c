@@ -41,7 +41,7 @@ void file_handle(char **av)
 		nread = getline(&buf, &size, line);
 	}
 	free(buf);
-	buf == NULL;
+	buf = NULL;
 	fclose(line);
 	free_stack(stack);
 }
