@@ -43,6 +43,8 @@ char **stringsplit(char *buf)
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(bufcpy, dlim);
+	if (*token == '#')
+		return (NULL);
 	if (token == NULL)
 	{
 		free(bufcpy);
