@@ -25,6 +25,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free(load.buf);
 		free_stack(*stack);
 		fclose(load.file);
 		exit(EXIT_FAILURE);
@@ -61,6 +62,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	if (node == NULL || node->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		free(load.buf);
 		free_stack(*stack);
 		fclose(load.file);
 		exit(EXIT_FAILURE);

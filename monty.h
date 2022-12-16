@@ -40,6 +40,7 @@ typedef struct instruction_s
 typedef struct load
 {
 	FILE *file;
+	char *buf;
 	int data;
 } load_t;
 extern load_t load;

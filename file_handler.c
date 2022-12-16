@@ -7,7 +7,7 @@
  * @ac: argument count
  * @av: argument strings
 */
-load_t load = {NULL, 0};
+load_t load = {NULL, NULL, 0};
 void file_handle(char **av)
 {
 	FILE *line;
@@ -28,6 +28,7 @@ void file_handle(char **av)
 		exit(EXIT_FAILURE);
 	}
 	nread = getline(&buf, &size, line);
+	load.buf = buf;
 	while (nread >= 0)
 	{
 		line_no++;
