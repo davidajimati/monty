@@ -7,7 +7,7 @@
  * @ac: argument count
  * @av: argument strings
 */
-
+load_t load = {NULL, 0};
 void file_handle(char **av)
 {
 	FILE *line;
@@ -21,6 +21,7 @@ void file_handle(char **av)
 
 	file = av[1];
 	line = fopen(file, "r");
+	load.file = line;
 	if (line == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", file);
@@ -37,9 +38,9 @@ void file_handle(char **av)
 			continue;
 		}
 		func = getfunc(avcode);
+		free_av(avcode);
 		if (func != NULL)
 			func(&stack, line_no);
-		free_av(avcode);
 		nread = getline(&buf, &size, line);
 	}
 	free(buf);

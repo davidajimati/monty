@@ -37,6 +37,13 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+typedef struct load
+{
+	FILE *file;
+	int data;
+} load_t;
+extern load_t load;
+
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void file_handle(char **av);
@@ -55,6 +62,5 @@ void op_div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 
-extern int data;
 
 #endif

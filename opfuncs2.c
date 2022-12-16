@@ -26,6 +26,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		free_stack(*stack);
+		fclose(load.file);
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
@@ -61,6 +62,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		free_stack(*stack);
+		fclose(load.file);
 		exit(EXIT_FAILURE);
 	}
 
@@ -83,6 +85,7 @@ void add(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		free_stack(*stack);
+		fclose(load.file);
 		exit(EXIT_FAILURE);
 	}
 	node->next->n += node->n;

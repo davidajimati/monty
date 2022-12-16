@@ -6,7 +6,6 @@
  * Return: pointer to appropriate function
 */
 
-int data;
 
 void (*getfunc(char **avcode))(stack_t **, unsigned int)
 {
@@ -35,12 +34,12 @@ void (*getfunc(char **avcode))(stack_t **, unsigned int)
 			code = avcode[j];
 			element = avcode[j + 1];
 			if (element != NULL)
-				data = atoi(element);
+				load.data = atoi(element);
 			if (strcmp(ops[i].opcode, code) == 0)
 			{
 				element = avcode[j + 1];
 				if (element != NULL && strcmp("push", code) == 0)
-					data = atoi(element);
+					load.data = atoi(element);
 				return (ops[i].f);
 			}
 			j++;
@@ -65,10 +64,11 @@ void push(stack_t **stack, unsigned int line_number)
 	if (node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		fclose(load.file);
 		exit(EXIT_FAILURE);
 	}
 	node->prev = NULL;
-	node->n = data;
+	node->n = load.data;
 	if (*stack == NULL)
 	{
 		*stack = node;
