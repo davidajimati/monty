@@ -101,3 +101,4 @@ void checkstack(stack_t **stack, int count)
 		exit(EXIT_FAILURE);
 	}
 }
+
