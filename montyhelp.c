@@ -44,7 +44,11 @@ char **stringsplit(char *buf)
 	}
 	token = strtok(bufcpy, dlim);
 	if (*token == '#')
+	{
+		free(bufcpy);
+		free(avcode);
 		return (NULL);
+	}
 	if (token == NULL)
 	{
 		free(bufcpy);
