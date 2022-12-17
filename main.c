@@ -4,6 +4,7 @@
  * main - main driver of code
  * @ac: argument count
  * @av: argument strings
+ * Return: Always zero
 */
 
 int main(int ac, char **av)

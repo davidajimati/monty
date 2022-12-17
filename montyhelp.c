@@ -43,7 +43,7 @@ char **stringsplit(char *buf)
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(bufcpy, dlim);
-	
+
 	if (token == NULL)
 	{
 		free(bufcpy);
@@ -98,6 +98,12 @@ void free_stack(stack_t *stack)
 		stack = tmp;
 	}
 }
+
+/**
+ * checkstack - frees a linked list stack_t
+ * @stack: pointer to head of linked list
+ * @count: line number of execution
+*/
 
 void checkstack(stack_t **stack, int count)
 {

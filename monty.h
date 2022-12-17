@@ -41,14 +41,16 @@ typedef struct load
 {
 	FILE *file;
 	char *buf;
+	char *code;
 	int data;
+	int count;
 } load_t;
 extern load_t load;
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void file_handle(char **av);
-void (*getfunc(char **avcode))(stack_t **, unsigned int);
+void (*getfunc(char **avcode, stack_t **stack))(stack_t **, unsigned int);
 char **stringsplit(char *buf);
 void free_av(char **av);
 void free_stack(stack_t *stack);
@@ -62,6 +64,6 @@ void sub(stack_t **stack, unsigned int line_number);
 void op_div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
-
+int digit(char *s);
 
 #endif
