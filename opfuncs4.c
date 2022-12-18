@@ -87,6 +87,9 @@ void rotr(stack_t **stack, unsigned int line_number)
 	stack_t *ptr = NULL;
 	(void)line_number;
 
+	if (node == NULL || node == NULL)
+		return;
+
 	while (node != NULL)
 	{
 		ptr->prev = node->next;
@@ -94,8 +97,13 @@ void rotr(stack_t **stack, unsigned int line_number)
 		ptr = ptr->prev;
 	}
 
+	ptr = node;
+
+	for (; ptr->next != NULL; ptr = ptr->next)
+		;
+
+	ptr->prev->next = NULL;
+	ptr->next = node;
+	node->prev = ptr;
 	node = ptr;
-	free(load.buf);
-	free_stack(*stack);
-	fclose(load.file);
 }
