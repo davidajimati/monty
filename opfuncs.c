@@ -20,6 +20,10 @@ void (*getfunc(char **avcode, stack_t **stack))(stack_t **, unsigned int)
 	    {"div", op_div},
 	    {"mul", mul},
 	    {"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
 	    {NULL, NULL}};
 	int i = 0;
 	char *code, *element;
